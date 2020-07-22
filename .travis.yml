@@ -25,7 +25,9 @@ matrix:
           update: true
           sources:
             - deadsnakes
-            - llvm-toolchain-xenial-10 # https://docs.travis-ci.com/user/installing-dependencies/#adding-apt-sources
+            # https://docs.travis-ci.com/user/installing-dependencies#adding-apt-sources
+            - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
           packages:
             - ninja-build
             - cmake
