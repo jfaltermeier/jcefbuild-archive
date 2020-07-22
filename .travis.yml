@@ -43,7 +43,7 @@ matrix:
       compiler: clang
       env:
         - ARCH_DIST=macosx64
-        - PYTHON_EXECUTABLE:python3
+        - PYTHON_EXECUTABLE=python3
       addons:
         homebrew:
           update: false
