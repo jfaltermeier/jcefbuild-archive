@@ -41,7 +41,9 @@ matrix:
     - os: osx
       osx_image: xcode12
       compiler: clang
-      env: ARCH_DIST=macosx64
+      env:
+        - ARCH_DIST=macosx64
+        - PYTHON_EXECUTABLE:python3
       addons:
         homebrew:
           update: false
@@ -53,7 +55,7 @@ matrix:
             - gnu-tar
             - cmake
           taps: AdoptOpenJDK/openjdk
-          casks: adoptopenjdk11-openj9
+          casks: adoptopenjdk11
 
     - os: linux
       services: docker
@@ -75,7 +77,7 @@ matrix:
 
     - os: linux
       if: tag IS present
-      jdk: openjdk8
+      jdk: openjdk11
       script:
         - cd $JCEF_DIR/tools
         - ./make_docs.sh
