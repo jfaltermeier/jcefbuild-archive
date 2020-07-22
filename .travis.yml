@@ -99,7 +99,6 @@ before_install:
       # Ensure all homebrew packages are seen first
       export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
       export PATH="/usr/local/opt/python3/libexec/bin:$PATH"
-      python --version
     fi
   - unset _JAVA_OPTIONS # see https://github.com/travis-ci/travis-ci/issues/8408
 
