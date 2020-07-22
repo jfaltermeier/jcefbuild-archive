@@ -18,10 +18,10 @@ RUN apt-get -q update && apt-get -q upgrade --yes && \
     apt-get -q autoclean
 
 # add java bin to the path
-ENV PATH "/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+ENV PATH "/usr/lib/jvm/java-11-openjdk-i386/bin/:$PATH"
 
 # point to java
-ENV JAVA_HOME '/usr/lib/jvm/java-11-openjdk'
+ENV JAVA_HOME '/usr/lib/jvm/java-11-openjdk-i386'
 
 # use python3.7 as default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
