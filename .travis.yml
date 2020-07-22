@@ -5,39 +5,43 @@ language: java
 git:
   depth: false
 
+branches:
+  only:
+    - master
+    - development
+
 matrix:
   fast_finish: true
   include:
     - os: linux
       dist: xenial
-      compiler: clang-8
       jdk: openjdk11
       env:
         - ARCH_DIST=linux64
-        - CC=clang-8
-        - CXX=clang++-8
+        - CC=clang-10
+        - CXX=clang++-10
       addons:
         apt:
           update: true
           sources:
             - deadsnakes
-            - llvm-toolchain-xenial-8 # https://docs.travis-ci.com/user/installing-dependencies/#adding-apt-sources
+            - llvm-toolchain-xenial-10 # https://docs.travis-ci.com/user/installing-dependencies/#adding-apt-sources
           packages:
             - ninja-build
             - cmake
-            - clang-8
+            - clang-10
             - python3.7
             - lbzip2
             - build-essential
             - libgtk2.0-dev
 
     - os: osx
-      osx_image: xcode11
+      osx_image: xcode12
       compiler: clang
       env: ARCH_DIST=macosx64
       addons:
         homebrew:
-          update: true
+          update: false
           packages:
             - ninja
             - ant
@@ -52,8 +56,8 @@ matrix:
       services: docker
       env:
         - ARCH_DIST=linux32
-        - CC=clang-8
-        - CXX=clang++-8
+        - CC=clang-10
+        - CXX=clang++-10
       install:
           - docker build --rm --tag travis-build .
           - |

@@ -1,14 +1,14 @@
 FROM i386/debian:buster-slim
 
 ENV BASE_PACKAGES git libgtk2.0-dev libxss1 libxt-dev
-ENV BUILD_TOOLS openjdk-11-jdk python3.7 lbzip2 rsync ninja-build clang-8 cmake
+ENV BUILD_TOOLS openjdk-11-jdk python3.7 lbzip2 rsync ninja-build clang-10 cmake
 
 RUN apt-get -q update && \
     apt-get -q install --no-install-recommends --yes wget apt-transport-https gnupg software-properties-common
 
 # clang package sources
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
-    add-apt-repository "deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch-8 main" && \
+    add-apt-repository "deb http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main" && \
     mkdir -p /usr/share/man/man1
 
 # install tools
