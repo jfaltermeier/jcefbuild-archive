@@ -41,9 +41,7 @@ matrix:
     - os: osx
       osx_image: xcode12
       compiler: clang
-      env:
-        - ARCH_DIST=macosx64
-        - PYTHON_EXECUTABLE=python3
+      env: ARCH_DIST=macosx64
       addons:
         homebrew:
           update: false
@@ -98,7 +96,10 @@ matrix:
 before_install:
   - |
     if [ $TRAVIS_OS_NAME = 'osx' ]; then
+      # Ensure all homebrew packages are seen first
       export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+      export PATH="/usr/local/opt/python3/libexec/bin:$PATH"
+      python --version
     fi
   - unset _JAVA_OPTIONS # see https://github.com/travis-ci/travis-ci/issues/8408
 
